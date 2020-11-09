@@ -1,0 +1,31 @@
+#openAccountForm {
+  display: none;
+}
+
+#viewAccountForm {
+  display: none;
+}
+
+#closeAccountForm {
+  display: none;
+}
+
+#displayAccount {
+  display: none;
+}
+
+#displayDeposit {
+ display: none;
+}
+
+#displayWithdraw {
+  display: none;
+}
+
+#displayError {
+  display: none;
+}
+
+#displayMessage {
+  display: none;
+}

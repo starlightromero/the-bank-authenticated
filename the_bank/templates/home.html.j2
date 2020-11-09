@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+  <script src="{{ url_for('static', filename='js/main.js') }}" charset="utf-8" defer></script>
+  <title>The Bank</title>
+</head>
+
+<body class="bg-primary text-light d-flex flex-column justify-content-center align-items-start h-100">
+  <main class="container">
+    <div class="row">
+
+      <div class="col">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1 class="text-light">The Bank</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h3 class="text-secondary">We hold all the accounts.</h3>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <button type="button" class="btn btn-outline-secondary w-100" id="openAccount">
+                Open Account
+              </button>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <button type="button" class="btn btn-outline-secondary w-100" id="viewAccount">
+                View Account
+              </button>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <button type="button" class="btn btn-outline-secondary w-100" id="closeAccount">
+                Close Account
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="row">
+          <div class="col">
+
+            <h4 id="displayError" class="text-light"></h4>
+
+            <h4 id="displayMessage" class="text-light"></h4>
+
+            <form id="openAccountForm">
+              <legend>Open Account</legend>
+              <div class="form-group">
+                <label for="openAccountHolder">Account Holder</label>
+                <input type="text" class="form-control" id="openAccountHolder" aria-describedby="accountHolderHelp" placeholder="Enter the account holder's name">
+                <small id="accountHolderHelp" class="form-text text-muted">You will not be able to change this.</small>
+              </div>
+              <button type="button" class="btn btn-outline-secondary w-100" id="openAccountConfirm">Open Account</button>
+            </form>
+
+            <form id="viewAccountForm">
+              <legend>View Account</legend>
+              <div class="form-group">
+                <label for="viewAccountHolder">Account Holder</label>
+                <input type="text" class="form-control" id="viewAccountHolder" aria-describedby="accountHolderHelp" placeholder="Enter the account holder's name">
+                <small id="accountHolderHelp" class="form-text text-muted">Every account matters to us.</small>
+              </div>
+              <button type="button" class="btn btn-outline-secondary w-100" id="viewAccountConfirm">View Account</button>
+            </form>
+
+            <form id="closeAccountForm">
+              <legend>Close Account</legend>
+              <div class="form-group">
+                <label for="closeAccountHolder">Account Holder</label>
+                <input type="text" class="form-control" id="closeAccountHolder" aria-describedby="accountHolderHelp" placeholder="Enter the account holder's name">
+                <small id="accountHolderHelp" class="form-text text-muted">This action is permanent.</small>
+              </div>
+              <button type="button" class="btn btn-outline-secondary w-100" id="closeAccountConfirm">Close Account</button>
+            </form>
+
+            <div id="displayAccount">
+              <h2 class="text-light">Account Details</h2>
+              <h4 class="text-light">Holder: <span id="displayAccountHolder"></span></h4>
+              <h4 class="text-light">Balance (USD): <span id="displayAccountBalance"></span></h4>
+              <button type="button" class="btn btn-outline-secondary w-100 mt-3" id="deposit">Deposit</button>
+              <button type="button" class="btn btn-outline-secondary w-100 mt-3" id="withdraw">Withdraw</button>
+            </div>
+
+            <div id="displayDeposit">
+              <form id="depositForm">
+                <legend class="text-light">Deposit for <span id="displayDepositHolder"></span></legend>
+                <div class="form-group">
+                  <label for="depositAmount">Amount (USD)</label>
+                  <input type="number" min="0" class="form-control" id="depositAmount" aria-describedby="depositAmountHelp" placeholder="Enter the deposit amount">
+                  <small id="depositAmountHelp" class="form-text text-muted">The deposit will be available immediately.</small>
+                </div>
+                <button type="button" class="btn btn-outline-secondary w-100" id="depositConfirm">Deposit</button>
+              </form>
+            </div>
+
+            <div id="displayWithdraw">
+              <form id="withdrawForm">
+                <legend>Withdraw for <span id="displayWithdrawHolder"></span></legend>
+                <div class="form-group">
+                  <label for="withdrawAmount">Amount (USD)</label>
+                  <input type="number" min="0" class="form-control" id="withdrawAmount" aria-describedby="withdrawAmountHelp" placeholder="Enter the withdraw amount">
+                  <small id="withdrawAmountHelp" class="form-text text-muted">The withdraw will be reflected in the account immediately.</small>
+                </div>
+                <button type="button" class="btn btn-outline-secondary w-100" id="withdrawConfirm">Withdraw</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+
+</html>
